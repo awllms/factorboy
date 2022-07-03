@@ -51,7 +51,7 @@ function App() {
 
   const fetching = (fetchedInput) => {
     if (fetchedInput === '') {
-      console.log('I\'m blank');
+      // console.log('I\'m blank');
       const inputEl = document.getElementById('outlined-basic');
       inputEl.focus();
       inputEl.setSelectionRange(0, 0);
@@ -82,6 +82,7 @@ function App() {
   const handleExampleClick = (event) => {
     event.preventDefault();
     setInput(event.target.value);
+    setAnswer('');
   }
 
   const handleFactorClick = (event) => {
@@ -156,7 +157,7 @@ function App() {
                     component="h2" 
                     sx={{
                       fontWeight: 'bold',
-                    }}>{answer === 'nil' ? 'Equation isn\'t valid. Please try another.' : answer }
+                    }}>{answer === 'nil' ? 'Equation isn\'t valid. Please try another.' : answer === `${input}` ? 'Not factorable' : answer}
                 </Typography>
               </React.Fragment>
             ) : ''
