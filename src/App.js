@@ -56,6 +56,7 @@ function App() {
       inputEl.focus();
       inputEl.setSelectionRange(0, 0);
       setInput('');
+      setAnswer('');
     } else {     
       fetch(`${FACTORURL}/${fetchedInput}`, requestOptions)
       .then(response => response.text())
@@ -75,7 +76,8 @@ function App() {
     if (input !== '') {
       sanitizeInput(input);
     } else {
-      console.log('I\'m empty');
+      // console.log('I\'m empty');
+      setAnswer('');
     }
   }
 
@@ -157,7 +159,7 @@ function App() {
                     component="h2" 
                     sx={{
                       fontWeight: 'bold',
-                    }}>{answer === 'nil' ? 'Equation isn\'t valid. Please try another.' : answer === `${input}` ? 'Not factorable' : answer}
+                    }}>{answer === 'nil' ? 'Equation isn\'t valid. Please try another.' : answer.replace(/\s/g, '') === `${input.replace(/\s/g, '')}` ? 'Not factorable' : answer}
                 </Typography>
               </React.Fragment>
             ) : ''
